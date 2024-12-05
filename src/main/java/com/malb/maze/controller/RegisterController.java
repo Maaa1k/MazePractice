@@ -31,21 +31,27 @@ public class RegisterController {
                            @RequestParam String password,
                            Model model) {
 
-        Optional<User> existingUser = userService.findByUsername(username);
-        if (existingUser.isPresent()) {
-            // Si el usuario ya existe, mostrar el mensaje de error
-            model.addAttribute("error", "El usuario ya existe");
-            return "register"; // Volver al formulario de registro con el mensaje de error
+        try {
+            boolean existingUser = userService.checkUser(username);
+            if (!existingUser) {
+                // Si el usuario ya existe, mostrar el mensaje de error
+                model.addAttribute("error", "El nombre de usuario ya está registrado.");
+                return "register"; // Volver al formulario de registro con el mensaje de error
+            }
+
+            // Crear el objeto User
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(password); // La contraseña debe ser encriptada en el servicio
+
+            // Registrar el usuario
+            userService.registerUser(user);
+
+            return "redirect:/login"; // Redirige al login después del registro exitoso
+        } catch (Exception e) {
+            // Si ocurre algún error inesperado, mostrar un mensaje genérico
+            model.addAttribute("error", "Ocurrió un error durante el registro. Por favor, inténtalo de nuevo.");
+            return "register";
         }
-        // Crear el objeto User
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password); // La contraseña no está encriptada todavía
-
-
-        // Registrar el usuario (la contraseña se encripta en el servicio)
-        userService.registerUser(user);
-
-        return "redirect:/login"; // Redirige al login después del registro
     }
 }

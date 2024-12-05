@@ -27,17 +27,21 @@ public class LoginController {
     public String login(@RequestParam String username,
                         @RequestParam String password,
                         Model model) {
-        // Buscar al usuario por su username
-        Optional<User> user = userService.findByUsername(username);
-
-        if (user.isPresent() && PasswordHashUtil.verifyPassword(password, user.get().getPassword())) {
-            // Contraseña correcta
-            model.addAttribute("user", user);
-            return "redirect:/dashboard"; // Página de bienvenida
+        try {
+            Optional<User> user = userService.findByUsername(username);
+            if (user.isPresent() && PasswordHashUtil.verifyPassword(password, user.get().getPassword())) {
+                // Si el usuario y contraseña son correctos
+                return "redirect:/dashboard"; // Redirigir a otra página
+            } else {
+                System.out.println(user.get().getPassword());
+                // Credenciales incorrectas
+                model.addAttribute("error", "Usuario o contraseña incorrectos.");
+                return "login"; // Volver a la página de login
+            }
+        } catch (Exception e) {
+            // Manejar errores inesperados
+            model.addAttribute("error", "Ocurrió un error. Inténtalo de nuevo más tarde.");
+            return "login"; // Volver a la página de login
         }
-
-        // Si las credenciales no coinciden
-        model.addAttribute("error", "Usuario o contraseña incorrectos");
-        return "login";
     }
 }

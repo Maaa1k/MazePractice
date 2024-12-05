@@ -33,7 +33,9 @@ public class UserService {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-
+    public boolean checkUser(String username){
+        return  userRepository.checkUser(username);
+    }
     // Obtener todos los usuarios
     public List<User> findAllUsers() {
         return userRepository.findAll();

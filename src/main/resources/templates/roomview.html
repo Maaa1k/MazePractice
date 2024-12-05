@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mazmorras</title>
+    <style>
+        /* Estilos generales para la tabla */
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        td {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 24px;
+            border: 1px solid #333;
+        }
+
+        /* Estilos para las paredes */
+        .wall {
+            background-color: black;
+        }
+
+        /* Estilos para las propiedades variables (W, S, E, N) */
+        .W {
+            background-color: green; /* Representa la sala de agua */
+            color: white;
+        }
+        .S {
+            background-color: blue; /* Representa la sala de fuego */
+            color: white;
+        }
+        .E {
+            background-color: red; /* Representa la sala de tierra */
+            color: white;
+        }
+        .N {
+            background-color: yellow; /* Representa la sala de aire */
+            color: white;
+        }
+
+        /* Estilos para las llaves y monedas */
+        .key {
+            background-color: gold;
+            color: black;
+        }
+
+        .coin {
+            background-color: silver;
+            color: black;
+        }
+
+        /* Estilos para las celdas vacías */
+        .empty {
+            background-color: white;
+        }
+
+               /* Estilos para los botones direccionales */
+        .directional-buttons {
+            position: fixed; /* Fijar los botones a la derecha */
+            top: 50%; /* Centrar verticalmente */
+            right: 20px;
+            transform: translateY(-50%); /* Ajuste para centrar completamente */
+            text-align: center;
+        }
+
+        .directional-buttons button {
+            font-size: 20px;
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .directional-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>Juego de Mazmorras</h1>
+<table>
+    <!-- Filas de la mazmora 7x7 -->
+    <tr>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="N"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="coin"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="W"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="E"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="key"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="S"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+        <td class="wall"></td>
+    </tr>
+</table>
+
+<!-- Botones direccionales -->
+<div class="directional-buttons">
+    <button id="north" onclick="move('north')">↑</button><br>
+    <button id="west" onclick="move('west')">←</button>
+    <button id="east" onclick="move('east')">→</button><br>
+    <button id="south" onclick="move('south')">↓</button>
+</div>
+
+<script>
+    // Ejemplo de cómo cambiar dinámicamente las propiedades de las salas (W, S, E, N)
+    function cambiarPropiedades() {
+        document.querySelector('.W').style.backgroundColor = 'purple'; // Cambio de color para la sala 'W'
+        document.querySelector('.S').style.backgroundColor = 'orange'; // Cambio de color para la sala 'S'
+        document.querySelector('.E').style.backgroundColor = 'brown'; // Cambio de color para la sala 'E'
+        document.querySelector('.N').style.backgroundColor = 'pink'; // Cambio de color para la sala 'N'
+
+        // Si hay llaves o monedas que no estén en las celdas, las podemos esconder o mostrar
+        document.querySelector('.coin').classList.add('empty'); // Eliminar la moneda
+        document.querySelector('.coin').classList.remove('coin'); // Quitar la clase "coin"
+
+        document.querySelector('.empty').classList.add('key'); // Colocar la llave
+    }
+
+    // Función para mover al jugador (esto es solo un ejemplo, aún no hay lógica real para el movimiento)
+    function move(direction) {
+        console.log(`Movimiento hacia: ${direction}`);
+        // Aquí deberías agregar la lógica para mover al jugador en la mazmora
+        // Dependiendo de la dirección (north, south, east, west), el jugador cambiaría de sala
+    }
+</script>
+</body>
+</html>

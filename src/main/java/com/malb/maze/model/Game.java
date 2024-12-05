@@ -1,16 +1,12 @@
 package com.malb.maze.model;
 
-public class History {
+public class Game {
     int id;
     int idPlayer;
-    int score;
-    String keys; //Guardar las ID de las key
-    String coins;
-    String doors;
+    int idScore;
     int idMaze;
     String username;
     String coinScore;
-
 
     public int getId() {
         return id;
@@ -28,36 +24,12 @@ public class History {
         this.idPlayer = idPlayer;
     }
 
-    public int getScore() {
-        return score;
+    public int getIdScore() {
+        return idScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getKeys() {
-        return keys;
-    }
-
-    public void setKeys(String keys) {
-        this.keys = keys;
-    }
-
-    public String getCoins() {
-        return coins;
-    }
-
-    public void setCoins(String coins) {
-        this.coins = coins;
-    }
-
-    public String getDoors() {
-        return doors;
-    }
-
-    public void setDoors(String doors) {
-        this.doors = doors;
+    public void setIdScore(int idScore) {
+        this.idScore = idScore;
     }
 
     public int getIdMaze() {

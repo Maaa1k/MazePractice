@@ -18,7 +18,9 @@
     </div>
     <button type="submit">Iniciar Sesión</button>
 </form>
+<!-- Mostrar mensaje de error en rojo si existe -->
 <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
 <p>¿No tienes una cuenta? <a href="/register">Regístrate aquí</a>.</p>
 </body>
 </html>
