@@ -93,7 +93,7 @@
         <td class="wall"></td>
         <td class="wall"></td>
         <td class="wall"></td>
-        <td class="N"></td>
+        <td class="N" th:text="${rooms.N}"></td>
         <td class="wall"></td>
         <td class="wall"></td>
         <td class="wall"></td>
@@ -104,26 +104,8 @@
         <td class="empty"></td>
         <td class="empty"></td>
         <td class="empty"></td>
-        <td class="coin"></td>
+        <td class="coin" th:text="${rooms.ItemCoin}"></td>
         <td class="wall"></td>
-    </tr>
-    <tr>
-        <td class="wall"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="wall"></td>
-    </tr>
-    <tr>
-        <td class="W"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="empty"></td>
-        <td class="E"></td>
     </tr>
     <tr>
         <td class="wall"></td>
@@ -135,8 +117,26 @@
         <td class="wall"></td>
     </tr>
     <tr>
+        <td class="W" th:text="${rooms.W}"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="E" th:text="${rooms.E}"></td>
+    </tr>
+    <tr>
         <td class="wall"></td>
-        <td class="key"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="wall"></td>
+    </tr>
+    <tr>
+        <td class="wall"></td>
+        <td class="key" th:text="${rooms.ItemKey}"></td>
         <td class="empty"></td>
         <td class="empty"></td>
         <td class="empty"></td>
@@ -147,7 +147,7 @@
         <td class="wall"></td>
         <td class="wall"></td>
         <td class="wall"></td>
-        <td class="S"></td>
+        <td class="S" th:text="${rooms.S}"></td>
         <td class="wall"></td>
         <td class="wall"></td>
         <td class="wall"></td>
